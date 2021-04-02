@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>TELEROBOT VERSION 3.0 1/4/2021</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Script for jQuery -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <script src="src/jquery-3.6.0.js"></script>
+
+</head>
+
+
+<body style="background-color: beige;">
+    <!-- <img src="src/logo.jpg" alt="Logo"> -->
+    <div>
+        <div class="col-3" style="color: rgb(49, 100, 125);font-weight: bold;">
+            <p class="mySel" id="g5001_sel" onclick="setTarget('g5001')">Girona 500 1</p>
+        </div>
+        <div class="col-3">
+            <p class="mySel" id="g5002_sel" onclick="setTarget('g5002')">Girona 500 2</p>
+        </div>
+        <div class="col-3">
+            <p class="mySel" id="brov_sel" onclick="setTarget('brov')">BlueROV</p>
+        </div>
+        <div class="col-3">
+            <p class "mySel" id="info_sel">Help</p>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="column2">
+            <div>
+                <iframe id="img" src="http:127.0.0.1:8001" title="Gir5001 image" width="640" height="480"></iframe>
+            </div>
+            <div>
+                <p style="text-align: center; background-color: rgb(49, 100, 125, 0.4); font-size: 14px;" id="dir"></p>
+            </div>
+        </div>
+        <div class="column">
+
+            <!-- controls  -->
+            <hr>
+            <div class="btn-row" style="text-align: center;">
+                <button id="up"       onclick="up()"        >&#9039</button>
+                <button id="forward"  onclick="forward()"   >&#8593</button>
+                <button id="down"     onclick="down()"      >&#9046</button>
+                <button style="margin-left: 20px;" id="openG" onclick="openG()">O</button>
+            </div>
+            <div class="btn-row" style="text-align: center;">
+                <button id="left"     onclick="left()"      >&#8592</button>
+                <button id="stop"     onclick="stop()"      >&#9632</button>
+                <button id="right"    onclick="right()"     >&#8594</button>
+                <button style="margin-left: 20px;" id="stopG" onclick="stopG()">S</button>
+            </div>
+            <div class="btn-row" style="text-align: center;">
+                <button id="turnright" onclick="turnright()" >&#8635</button>
+                <button id="backward"  onclick="backward()"  >&#8595</button>
+                <button id="turnleft"  onclick="turnleft()"  >&#8634</button>
+                <button style="margin-left: 20px;" id="closeG" onclick="closeG()">C</button>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="minicolumn">
+                    <form>
+                        <label class="myLabel">X: </label>
+                        <input size="8" type="text" name="X" /><br>
+                        <label class="myLabel">Y: </label>
+                        <input size="8"type="text" name="Y" /><br>
+                        <label class="myLabel">Z: </label>
+                        <input size="8" type="text" name="Z" /><br>
+                        <label class="myLabel">AZ: </label>
+                        <input size="8" type="text" name="AZ" /><br>
+                        <label class="myLabel">%: </label>
+                        <input size="8" type="text" name="PERCENTAGE" />
+                        <!-- <button class=button2 type="submit" id="collect" onclick="collect_params()">Set Velocity</button> -->
+                    </form>
+                </div>
+                <div class="minicolumn">
+                    <p style="text-align: center;">(Format: 0.0) </p>
+                    <button class=button2 style="width: 100%;height:auto" id="collect" onclick="collect_params()">Set<br>Velocity</button>
+                </div>
+                <p id="result"></p>
+            </div>
+            <hr>
+
+            <div>
+                <!-- <a href="http://localhost:8000/getPosition">Get Position</a> -->
+                <!-- <button class=button2 id="getPos" onclick="getPosition()">Get Position</button> -->
+                <form id="getPosForm" target="popup" style="text-align: center;">
+                    <button class=button2 id=getPos type="submit" value="Get Position"
+                    style="width: 100%;" onclick="getPosition()">Get Position</button>
+                </form>
+            </div>
+            <div>
+                <button class="button2" onclick="refreshIFrame()" 
+                style="text-align: center; width: 100%;" >Get Robot Camera</button>
+            </div>
+            <hr>
+        </div>
+    </div>
+
+    <!-- Pop-up help window -->
+    <div id="info" class="modal">
+        <!-- Info content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 style="text-align: center;">TELEROBOT VERSION 3.0 1/4/2021</h2>
+            <p>Run the TWINBOT Robotic Center Simulator before start using this GUI.</p>
+            <ul>
+                <li>Select the target to manage: Girona 500 1, Girona 500 2 or BlueROV.</li>
+                <li>Each button will activate a control command. Last command sent wil be displayed in a text box below the picture.</li>
+                <li>Manual control buttons allow horizontal and vertical displacements, rotating about the Z (vertical) axis and stop moving.
+                    <em>O</em>, <em>S</em> and <em>C</em> buttons refer to <em>Open</em>, <em>Stop</em> and <em>Close</em> griper, respectively.
+                </li>
+                <li>To obtain the current camera image, press the <em>Get Robot Camera</em> button.</li>
+                <li>To obtain the current robot position, press the <em>Get Position</em> button. Coordinates will be displayed in a pop-up window 
+                under JSON format.</li>
+                <li>The <em>Set Velocity</em> fields must be expressed with dot format decimal numbers. <em>AZ</em> refers to Z-axis rotation, and
+                <em>%</em> refers to velocity percentage. </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- My scripts -->
+    <script src="control.js"></script>
+
+</body>
