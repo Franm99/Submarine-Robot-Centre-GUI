@@ -1,4 +1,3 @@
-console.log("Hola??")
 // Path variables //
 var base_url = "http://127.0.0.1:"
 var g5001  = {base: "8000", cam: "8001", gripper: "8002"};
@@ -25,6 +24,8 @@ target = "g5001";
 
 var velPctg = 100.0;
 var velFraction = 1.0;
+
+document.getElementById("dir").innerHTML = base_url + eval(target).base;
 
 function get_pctg() {
   velPctg = document.getElementById("vel_pctg").value;
@@ -117,7 +118,7 @@ function setVelocity(queue) {
 
 function getPosition() {
     var dir = base_url + eval(target).base + m_comm.getP;
-    console.log(dir);
+    showLastComm(dir);
     document.getElementById("getPosForm").action = dir;
     window.open(dir, 'popup', 'left=500,top=500,width=550,height=20,scrollbars=no,resizable=no');
 }
@@ -127,6 +128,7 @@ function refreshIFrame() {
     var ifr = document.getElementById("img");
     dir = base_url + eval(target).cam;
     ifr.src = dir;
+    showLastComm(dir);
 }
 
 function collect_params() {
@@ -153,6 +155,9 @@ function setTarget(tgt) {
 
     document.getElementsByClassName("col-3")[act].style.color = "rgb(49, 100, 125)";
     document.getElementsByClassName("col-3")[act].style.fontWeight = "bold";
+    
+    dir = base_url + eval(target).base;
+    showLastComm(dir);
 }
 
 function showLastComm(dir) {
@@ -161,7 +166,6 @@ function showLastComm(dir) {
 
 
 // -  Some help  - // 
-
 // Get the modal
 var info = document.getElementById("info");
 

@@ -1,14 +1,10 @@
-body {
-    background-color: rgba(255, 127, 80, 0.288);
-}
-
-h1   {
+/* h1   {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     color: rgb(49, 125, 125);
     border: 2px solid rgb(49, 100, 125);
     padding: 5 px;
     text-align: center;
-}
+} */
 
 h2   {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -19,11 +15,11 @@ p    {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.tit {
+/* .tit {
     color:darkcyan;
     padding: none;
     margin: 0%;
-}
+} */
 
 button {
     background-color: rgb(49, 100, 125);
@@ -42,33 +38,15 @@ button {
     width: 100px;
     height: 35px;
     padding: 10px;
-    font-size: small;
+    font-size: medium;
     border-radius: 0%;
     display: inline-block;
     margin:"0";
-}
-
-.slider {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 230px;
-    height: 25px;
-    margin-left: 10px ;
-    text-align: center;
-    background:rgb(49, 100, 125);
-    outline: none;
-    opacity: 0.8;
-    margin-bottom: 5px;
-    margin-top: 5px;
-}
-
-.slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 25px;
-    height: 45px;
-    background: black;
     cursor: pointer;
+}
+
+.button2:hover {
+    background-color: darkgray;
 }
 
 .btn-row button {
@@ -147,7 +125,7 @@ button {
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-    height: 275px;
+    height: auto;
 }
 
 .modal-body {
